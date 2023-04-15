@@ -1,0 +1,159 @@
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - string:
+          description: "kubernetes-agent"
+          id: "kubernetes-agent"
+          scope: GLOBAL
+          secret: "{AQAAABAAAAOAvFxOwjA1L78sYeJAcLZGIA9h7+vOw+mhsB2129ARPT/vbDHmoZY2dUIrdRAMAlFY1gU1kUEe46qVJxws7F3AqfO7ktZABrKoBkXRRNelnOvZjT6ZeSD8WnirSCobFeQ90yvqTxLJ3LBnWdkW6XOJ/LGi47xULo7+8OWc+GrNAEKVUfaffNRCQQLNI2vnIySvqCfyDpJgjjRuvCHOkkN6n2Zlz9KtiXzNsjtBEsJd54QtSqsni2ztDyStoPhXDBysObqM6ZG6xsY9S/dbl7PP37Fym5SHYOilk4j5bfKAuqcrj/3Na9jfBTJfYUt8dxFwfam1M3y1Z7vJnA4NObuQxxIVTEFr1eqMn/bsnrbjsQ/y+cwWDGGFmIWhNTYQQa+30NrX+8ZJwrIRPgNGFB2bAVaEOW0xRJtfX64XBtIKqoq6KhHxWru4YAtcZFxCfeF4dGkjdDJR5DVi9L9pgQHXDCbDgZK2uMlWKcDH95ylZZHBqELVJNfmOd2rNWDb1I/PLgPB4HkZxBfczyckC/8sGeMZ+9iXK4ajjyOOwhQh3x5uwMZ2CmxHbk2OBCRk1w0U5384RfyqI6CQjALZTegdbXR/3dzWYkQNL5WO8EiMibZY0fJM/QfBA7C5cwCL+NWzmotPpB8JQZ2cVWsP7GEZvIjFkiSQGWNyuVLY1Pl3rc5FfoKJhZmztuUhmsx4zF6IChs5Yz6vE8lO5h4mn57NpO71I5N2YPUUtpEb/PfPPwPvhR9UgsoNuKN3HcIyRi0QEq04G1yR5qSLvsKLe3oU5ay32xHPYxe8vj2I7n8S6yxfKL7CJlRGZZHokbIdSQ3Ij67SjrLQyqt4mZIlEXP1xsh4tJLAMO8xtYEI9WnVNKt3lkZ8rM5iIzNN94xaL0v+1l7SCxJIemIs9TIlYPZ+4PRU8zj3/FIt4Rf+UzjBwFgghSa3MC8I0549fofb0hhNmyvjhXFjIWG6SKWgyxlIbvIz0jwrIUicOolXCvgPC9KE5Un2ujfOk42UneTVVEQY5OzsTxG0jXWBLrjoXWnS/XbIDRVXkGDNBQ5BNN+q40ajEzcaQ5JDLhYcfFtPP4xSgA9l54gAFGlwT8+jTD88VP7lZhlT6XWCAuuJG6ibvFeoQQBX5OFKEd42B+Tp+64WmuEzU/isW5ygL7e0fz5W6cNNJ4M+AO2KtaXxNlNtRuBtSJlO5AbNt4xCEFz3Bk6M}"
+jenkins:
+  agentProtocols:
+  - "JNLP4-connect"
+  - "Ping"
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+  clouds:
+  - kubernetes:
+      containerCap: 10
+      containerCapStr: "10"
+      credentialsId: "kubernetes-agent"
+      name: "kubernetes-build"
+      namespace: "jenkins"
+      serverUrl: "https://172.31.43.85:50000"
+      skipTlsVerify: true
+      webSocket: true
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
+  disableRememberMe: false
+  labelAtoms:
+  - name: "built-in"
+  markupFormatter: "plainText"
+  mode: NORMAL
+  myViewsTabBar: "standard"
+  numExecutors: 0
+  primaryView:
+    all:
+      name: "all"
+  projectNamingStrategy: "standard"
+  quietPeriod: 5
+  remotingSecurity:
+    enabled: true
+  scmCheckoutRetryCount: 0
+  securityRealm:
+    local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+      - id: "gowtham"
+        name: "sai gowtham"
+        properties:
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+        - mailer:
+            emailAddress: "boggarapusaigowtham@gmail.com"
+        - "apiToken"
+  slaveAgentPort: -1
+  updateCenter:
+    sites:
+    - id: "default"
+      url: "https://updates.jenkins.io/update-center.json"
+  views:
+  - all:
+      name: "all"
+  viewsTabBar: "standard"
+globalCredentialsConfiguration:
+  configuration:
+    providerFilter: "none"
+    typeFilter: "none"
+security:
+  apiToken:
+    creationOfLegacyTokenEnabled: false
+    tokenGenerationOnCreationEnabled: false
+    usageStatisticsEnabled: true
+  gitHooks:
+    allowedOnAgents: false
+    allowedOnController: false
+  gitHostKeyVerificationConfiguration:
+    sshHostKeyVerificationStrategy: "knownHostsFileVerificationStrategy"
+  sSHD:
+    port: -1
+unclassified:
+  buildDiscarders:
+    configuredBuildDiscarders:
+    - "jobBuildDiscarder"
+  buildStepOperation:
+    enabled: false
+  email-ext:
+    adminRequiredForTemplateTesting: false
+    allowUnregisteredEnabled: false
+    charset: "UTF-8"
+    debugMode: false
+    defaultBody: |-
+      $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+
+      Check console output at $BUILD_URL to view the results.
+    defaultContentType: "text/plain"
+    defaultSubject: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!"
+    defaultTriggerIds:
+    - "hudson.plugins.emailext.plugins.trigger.FailureTrigger"
+    maxAttachmentSize: -1
+    maxAttachmentSizeMb: -1
+    precedenceBulk: false
+    watchingEnabled: false
+  enrichedSummaryConfig:
+    enrichedSummaryEnabled: false
+    httpClientDelayBetweenRetriesInSeconds: 1
+    httpClientMaxRetries: 3
+    httpClientTimeoutInSeconds: 1
+  fingerprints:
+    fingerprintCleanupDisabled: false
+    storage: "file"
+  gitHubConfiguration:
+    apiRateLimitChecker: ThrottleForNormalize
+  gitHubPluginConfig:
+    hookUrl: "http://52.66.90.208:8080/github-webhook/"
+  globalTimeOutConfiguration:
+    operations:
+    - "abortOperation"
+    overwriteable: false
+  injectionConfig:
+    allowUntrusted: false
+    enabled: false
+    injectCcudExtension: false
+    injectMavenExtension: false
+  junitTestResultStorage:
+    storage: "file"
+  location:
+    adminAddress: "address not configured yet <nobody@nowhere>"
+    url: "http://52.66.90.208:8080/"
+  mailer:
+    charset: "UTF-8"
+    useSsl: false
+    useTls: false
+  pollSCM:
+    pollingThreadCount: 10
+  scmGit:
+    addGitTagAction: false
+    allowSecondFetch: false
+    createAccountBasedOnEmail: false
+    disableGitToolChooser: false
+    hideCredentials: false
+    showEntireCommitSummaryInChanges: false
+    useExistingAccountWithSameEmail: false
+  timestamper:
+    allPipelines: false
+    elapsedTimeFormat: "'<b>'HH:mm:ss.S'</b> '"
+    systemTimeFormat: "'<b>'HH:mm:ss'</b> '"
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
+  mavenGlobalConfig:
+    globalSettingsProvider: "standard"
+    settingsProvider: "standard"
